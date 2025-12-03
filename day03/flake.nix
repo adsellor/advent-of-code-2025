@@ -1,5 +1,5 @@
 {
-  description = "Advent of code day 2";
+  description = "Advent of code day 3";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -14,11 +14,11 @@
       {
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
-            jdk25
+            beam28Packages.erlang
           ];
 
           shellHook = ''
-            echo "java version: $(java --version | head -n1)"
+            echo "erlang version: $(erl -version)"
           '';
         };
       }
