@@ -1,0 +1,27 @@
+{
+  description = "Advent of code day 4";
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
+  };
+
+  outputs = { self, nixpkgs, flake-utils }:
+    flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+      {
+        devShells.default = pkgs.mkShell {
+          buildInputs = with pkgs; [
+            beam28Packages.elixir_1_19
+          ];
+
+          shellHook = ''
+            echo "elixir version: $(elixir --version)"
+          '';
+        };
+      }
+    );
+}
+
