@@ -1,10 +1,9 @@
 section .data
     filename db 'beam.txt', 0
     msg1 db 'part 1: ', 0
-    msg1_len equ $ - msg1 - 1
+    msg1_len equ $ - msg1
     msg2 db 'part 2: ', 0
-    msg2_len equ $ - msg2 - 1
-    newline db 10
+    msg2_len equ $ - msg2
 
 section .bss
     grid        resb 20022
